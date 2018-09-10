@@ -25,9 +25,8 @@ def bmi_calculator(weight, size):
 
 
 def bmi_to_csv(history):
-    csv_dialect = csv.register_dialect('csv_dialect', delimiter=',', quotechar='"')
-    with open('./output/history.csv', 'a', encoding='UTF-8') as file:
-        writer = csv.writer(file, dialect=csv_dialect)
+    with open('./output/history.csv', 'a', encoding='UTF-8', newline='') as file:
+        writer = csv.writer(file)
         writer.writerow(history)
 
 # Main Function to calculate the bmi.
@@ -44,10 +43,9 @@ def main():
         print('Enter only numbers please')
         return
     else:
-        weight = float(weight)
+        weight = int(weight)
 
     # TODO RegEx is not working correctly.
-    # TODO Round values.
     size = input('Please enter your size in m: ')
     if not re.match(r'\d', size):
         print('Enter only numbers please')
