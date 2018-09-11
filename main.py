@@ -59,7 +59,7 @@ def main():
     history = [his_date, weight, size, bmi_value]
 
     # Compare the actual bmi with the old one.
-    bmi.bmi_compare(history)
+    bmi.bmi_compare(bmi_value)
 
     # Write all data in a .csv file for the history.
     bmi.bmi_to_csv(history)

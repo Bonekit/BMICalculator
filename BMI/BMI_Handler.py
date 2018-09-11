@@ -27,18 +27,18 @@ class BMI_Handler():
             writer = csv.writer(file)
             writer.writerow(history)
 
-    def bmi_compare(self, bmi):
+    def bmi_compare(self, bmi_value):
         """Compare the old bmi-index with the new one"""
         try:
             with open(os.path.join(self._folder, self._file), 'r', encoding='UTF-8', newline='') as file:
                 reader = csv.reader(file)
                 for row in reader:
-                    if float(bmi) <= float(row[3]):
+                    if float(bmi_value) <= float(row[3]):
                         print('Same Weight or less, good!')
-                        print('Old BMI: {}, new BMI: {}\n'.format(str(row[3]), str(bmi)))
+                        print('Old BMI: {}, new BMI: {}\n'.format(str(row[3]), str(bmi_value)))
                     else:
                         print('You gained Weight, don´t eat so much food!')
-                        print('Old BMI: {}, new BMI: {}\n'.format(str(row[3]), str(bmi)))
+                        print('Old BMI: {}, new BMI: {}\n'.format(str(row[3]), str(bmi_value)))
         except FileNotFoundError:
             print('Nothing to compare, this seems to be your first entry.')
         time.sleep(1)
