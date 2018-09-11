@@ -8,47 +8,14 @@
 
 # Import Modules for the BMI-Calculator. 
 import subprocess
-import csv
 import re
 import datetime
 import time
+import BMI
 
 # ===============================
 #       MAIN FUNCTIONS
 # ===============================
-
-# Calculator to calculate the bmi.
-
-
-def bmi_calculator(weight, size):
-    """Calculate the BMI-Index"""
-    return weight / size **2
-
-
-def bmi_to_csv(history):
-    """Write Data to a .csv file, encoded in UTF-8
-    - Data: date, weight, size, BMI.
-    """
-    with open('./output/history.csv', 'a', encoding='UTF-8', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(history)
-
-
-def bmi_compare(bmi):
-    """Compare the old bmi-index with the new one"""
-    try:
-        with open('./output/history.csv', 'r', encoding='UTF-8', newline='') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                if float(bmi) <= float(row[3]):
-                    print('Same Weight or less, good!')
-                    print('Old BMI: {}, new BMI: {}\n'.format(str(row[3]), str(bmi)))
-                else:
-                    print('You gained Weight, don´t eat so much food!')
-                    print('Old BMI: {}, new BMI: {}\n'.format(str(row[3]), str(bmi)))
-    except FileNotFoundError:
-        print('Nothing to compare, this seems to be your first entry.')
-    time.sleep(1)
 
 # Main Function to calculate the bmi.
 
@@ -74,21 +41,21 @@ def main():
     else:
         size = float(size)
 
-    # Calculate the bmi.
-    bmi = round(bmi_calculator(weight, size), 1)
+    # Initialize BMI_Handler Class.
+    bmi = BMI.BMI_Handler(weight, size)
 
     # Print the result in console.
-    print('\nYour BMI is: {}'.format(str(bmi)))
-
-    # Compare the actual bmi with the old one.
-    bmi_compare(bmi)
+    print('\nYour BMI is: {}'.format(str(bmi.bmi_calculator())))
 
     # Assign the actual date to history and create a list with the other data.
     his_date = '{:%B %d, %Y}'.format(datetime.datetime.now())
     history = [his_date, weight, size, bmi]
 
+    # Compare the actual bmi with the old one.
+    bmi.bmi_compare(history)
+
     # Write all data in a .csv file for the history.
-    bmi_to_csv(history)
+    bmi.bmi_to_csv(history)
 
     # Job Done.
     print('Jobs done, goodbye')
