@@ -19,6 +19,9 @@ class BMI_Handler():
         """Calculate the BMI-Index"""
         return round(self.__weight / self.__size **2, 1)
 
+    def bmi_message(self, bmi_value):
+        pass
+
     def bmi_to_csv(self, history):
         """Write Data to a .csv file, encoded in UTF-8
         - Data: date, weight, size, BMI.
