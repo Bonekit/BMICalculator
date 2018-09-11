@@ -12,6 +12,7 @@ import re
 import datetime
 import time
 import BMI
+import os
 
 # ===============================
 #       MAIN FUNCTIONS
@@ -41,15 +42,21 @@ def main():
     else:
         size = float(size)
 
+    # Program path.
+    folder = os.path.join(os.path.dirname(__file__), 'output')
+
     # Initialize BMI_Handler Class.
-    bmi = BMI.BMI_Handler(weight, size)
+    bmi = BMI.BMI_Handler(weight, size, folder)
+
+    # Calculate the BMI-Index.
+    bmi_value = bmi.bmi_calculator()
 
     # Print the result in console.
-    print('\nYour BMI is: {}'.format(str(bmi.bmi_calculator())))
+    print('\nYour BMI is: {}'.format(str(bmi_value)))
 
     # Assign the actual date to history and create a list with the other data.
     his_date = '{:%B %d, %Y}'.format(datetime.datetime.now())
-    history = [his_date, weight, size, bmi]
+    history = [his_date, weight, size, bmi_value]
 
     # Compare the actual bmi with the old one.
     bmi.bmi_compare(history)

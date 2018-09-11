@@ -5,12 +5,15 @@
 # Import Modules for BMI_Handler Class.
 import csv
 import time
+import os
 
 # BMI_Handler Class.
 class BMI_Handler():
-    def __init__(self, weight, size):
+    def __init__(self, weight, size, folder):
         self.__weight = weight
         self.__size = size
+        self._folder = folder
+        self._file = 'history.csv'
 
     def bmi_calculator(self):
         """Calculate the BMI-Index"""
@@ -20,14 +23,14 @@ class BMI_Handler():
         """Write Data to a .csv file, encoded in UTF-8
         - Data: date, weight, size, BMI.
         """
-        with open('./output/history.csv', 'a', encoding='UTF-8', newline='') as file:
+        with open(os.path.join(self._folder, self._file), 'a', encoding='UTF-8', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(history)
 
     def bmi_compare(self, bmi):
         """Compare the old bmi-index with the new one"""
         try:
-            with open('./output/history.csv', 'r', encoding='UTF-8', newline='') as file:
+            with open(os.path.join(self._folder, self._file), 'r', encoding='UTF-8', newline='') as file:
                 reader = csv.reader(file)
                 for row in reader:
                     if float(bmi) <= float(row[3]):
