@@ -1,7 +1,21 @@
 # BMI-Calculator
 
-## Description
+### Description
 
-The BMI-Calculator calculates your BMI and write down your size, weight and BMI,
-into an .csv file with the actual date.
-Also the BMI-Calculator will inform you if you have lost weight or gain weight.
+The BMI-Calculator v1.0 to have a better view on your history about loosing or gaining weight.
+
+### Author
+
+Tobias Menzel
+
+### License
+
+Open-Source, do what you want with my code.
+
+### Build With
+
+- Python 3.6
+- Modules used: 
+-- CSV --subprocess --re --datetime --time --os
+- Class:
+-- BMI
