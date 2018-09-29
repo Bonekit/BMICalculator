@@ -15,7 +15,5 @@ Open-Source, do what you want with my code.
 ### Build With
 
 - Python 3.6
-- Modules used: 
--- csv --subprocess --re --datetime --time --os
-- Class:
--- BMI
+- Modules used (csv, subprocess, re, datetime, time, os)
+- Class used (bmi)
