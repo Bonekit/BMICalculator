@@ -8,7 +8,9 @@ import time
 import os
 
 # BMI_Handler Class.
-class BMI_Handler():
+
+
+class BmiHandler:
     def __init__(self, weight, size, folder):
         self.__weight = weight
         self.__size = size
