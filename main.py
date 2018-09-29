@@ -34,7 +34,6 @@ def main():
     else:
         weight = int(weight)
 
-    # TODO RegEx is not working correctly.
     size = input('Please enter your size in m: ')
     if not re.match(r'\d\.', size):
         print('Use only numbers and one dot, like this example: "1.90"')
