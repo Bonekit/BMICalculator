@@ -16,6 +16,6 @@ Open-Source, do what you want with my code.
 
 - Python 3.6
 - Modules used: 
--- CSV --subprocess --re --datetime --time --os
+-- csv --subprocess --re --datetime --time --os
 - Class:
 -- BMI
