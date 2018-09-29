@@ -66,7 +66,7 @@ def main():
 
     # Job Done.
     print('Job done, goodbye')
-    time.sleep(1)
+    time.sleep(3)
 
 
 # ===============================
