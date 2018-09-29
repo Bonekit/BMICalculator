@@ -14,6 +14,7 @@ import time
 import BMI
 import os
 
+
 # ===============================
 #       MAIN FUNCTIONS
 # ===============================
@@ -45,7 +46,7 @@ def main():
     folder = os.path.join(os.path.dirname(__file__), 'output')
 
     # Initialize BMI_Handler Class.
-    bmi = BMI.BMI_Handler(weight, size, folder)
+    bmi = BMI.BmiHandler(weight, size, folder)
 
     # Calculate the BMI-Index.
     bmi_value = bmi.bmi_calculator()
@@ -64,8 +65,9 @@ def main():
     bmi.bmi_to_csv(history)
 
     # Job Done.
-    print('Jobs done, goodbye')
+    print('Job done, goodbye')
     time.sleep(1)
+
 
 # ===============================
 #           MAIN PROGRAM

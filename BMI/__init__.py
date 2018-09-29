@@ -1,5 +1,5 @@
 # Import all modules from BMI.
-__all__ = ['BMI_Handler']
+__all__ = ['BmiHandler']
 
 # Import module from BMI.
-from .BMI_Handler import BMI_Handler
+from .BmiHandler import BmiHandler
