@@ -45,7 +45,7 @@ def main():
     # Program path.
     folder = os.path.join(os.path.dirname(__file__), 'output')
 
-    # Initialize BMI_Handler Class.
+    # Initialize BmiHandler Class.
     bmi = BMI.BmiHandler(weight, size, folder)
 
     # Calculate the BMI-Index.
