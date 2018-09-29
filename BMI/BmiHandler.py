@@ -1,5 +1,5 @@
 # ===============================
-#       BMIHANDLER Class
+#       BMI HANDLER Class
 # ===============================
 
 # Import Modules for BmiHandler Class.
