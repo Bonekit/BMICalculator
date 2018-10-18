@@ -1,5 +1,5 @@
 ---
-Author: Tobias Menze
+Author: Tobias Menzel
 Date: 18.10.2018
 Language: Python 3.6
 License: 
