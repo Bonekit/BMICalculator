@@ -1,19 +1,15 @@
+---
+Author: Tobias Menze
+Date: 18.10.2018
+Language: Python 3.6
+License: 
+---
 # BMI-Calculator
 
-### Description
+## Description
 
 The BMI-Calculator v1.0 to have a better view on your history about loosing or gaining weight.
 
-### Author
-
-Tobias Menzel
-
-### License
-
-Open-Source, do what you want with my code.
-
-### Build With
+## Build With
 
 - Python 3.6
-- Modules used (csv, subprocess, re, datetime, time, os)
-- Class used (bmi)
