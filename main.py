@@ -16,7 +16,7 @@ import os
 
 
 # ===============================
-#       MAIN FUNCTIONS
+#         MAIN FUNCTIONS
 # ===============================
 
 # Main Function to calculate the bmi.
@@ -70,7 +70,7 @@ def main():
 
 
 # ===============================
-#           MAIN PROGRAM
+#         MAIN PROGRAM
 # ===============================
 
 
