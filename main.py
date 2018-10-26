@@ -11,7 +11,7 @@ import subprocess
 import re
 import datetime
 import time
-import BMI
+from BMI.BMI import Calculator
 import os
 
 
@@ -46,10 +46,10 @@ def main():
     folder = os.path.join(os.path.dirname(__file__), 'output')
 
     # Initialize BmiHandler Class.
-    bmi = BMI.BmiHandler(weight, size, folder)
+    bmi = Calculator(weight, size, folder)
 
     # Calculate the BMI-Index.
-    bmi_value = bmi.bmi_calculator()
+    bmi_value = Calculator.calculate()
 
     # Print the result in console.
     print('\nYour BMI is: {}'.format(str(bmi_value)))
@@ -59,10 +59,10 @@ def main():
     history = [his_date, weight, size, bmi_value]
 
     # Compare the actual bmi with the old one.
-    bmi.bmi_compare(bmi_value)
+    bmi.compare(bmi_value)
 
     # Write all data in a .csv file for the history.
-    bmi.bmi_to_csv(history)
+    bmi.save_to_csv(history)
 
     # Job Done.
     print('Job done, goodbye')
