@@ -2,7 +2,7 @@
 Author: Tobias Menzel
 Date: 18.10.2018
 Language: Python 3.6
-License: 
+License: GNU GENERAL PUBLIC LICENCE VERSION 3
 ---
 # BMI-Calculator
 
