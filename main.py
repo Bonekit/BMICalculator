@@ -11,62 +11,38 @@ import subprocess
 import re
 import datetime
 import time
-from BMI.BMI import Calculator
+import tkinter as tk
 import os
+from lib.GUI import Application
 
 
 # ===============================
 #         MAIN FUNCTIONS
 # ===============================
 
-# Main Function to calculate the bmi.
+# Main Function.
 
 
 def main():
-    # Welcome.
-    subprocess.call('cls', shell=True)
-    print('Welcome to the BMI-Calculator v1.0')
+    # GUI Entry Point.
+    root = tk.Tk()
+    app = Application(master=root)
+    app.mainloop()
 
-    # User Input to get weight and size.
-    weight = input('Please enter your weight in kg: ')
-    if not re.match(r'\d', weight):
-        print('Use only numbers!')
-        return
-    else:
-        weight = int(weight)
-
-    size = input('Please enter your size in m: ')
-    if not re.match(r'\d\.', size):
-        print('Use only numbers and one dot, like this example: "1.90"')
-        return
-    else:
-        size = float(size)
-
-    # Program path.
-    folder = os.path.join(os.path.dirname(__file__), 'output')
-
-    # Initialize BmiHandler Class.
-    bmi = Calculator(weight, size, folder)
-
-    # Calculate the BMI-Index.
-    bmi_value = Calculator.calculate()
-
-    # Print the result in console.
-    print('\nYour BMI is: {}'.format(str(bmi_value)))
-
-    # Assign the actual date to history and create a list with the other data.
-    his_date = '{:%B %d, %Y}'.format(datetime.datetime.now())
-    history = [his_date, weight, size, bmi_value]
-
-    # Compare the actual bmi with the old one.
-    bmi.compare(bmi_value)
-
-    # Write all data in a .csv file for the history.
-    bmi.save_to_csv(history)
-
-    # Job Done.
-    print('Job done, goodbye')
-    time.sleep(3)
+    # # User Input to get weight and size.
+    # weight = input('Please enter your weight in kg: ')
+    # if not re.match(r'\d', weight):
+    #     print('Use only numbers!')
+    #     return
+    # else:
+    #     weight = int(weight)
+    #
+    # size = input('Please enter your size in m: ')
+    # if not re.match(r'\d\.', size):
+    #     print('Use only numbers and one dot, like this example: "1.90"')
+    #     return
+    # else:
+    #     size = float(size)
 
 
 # ===============================
