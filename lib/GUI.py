@@ -19,7 +19,7 @@ from datetime import datetime
 
 class Application(tk.Frame):
     def __init__(self, master=None):
-        super().__init__(master)
+        super().__init__(master, borderwidth=15)
         self.pack()
 
         # Initiate default values.
@@ -27,17 +27,45 @@ class Application(tk.Frame):
         self.file_path = os.getenv('HOME')
         self.calc_date = '{:%B %d, %Y}'.format(datetime.now())
 
+        # Add Label and textfield for the firstname.
+        self.lbl_firstname = tk.Label(self)
+        self.lbl_firstname['text'] = "Please enter your firstname:"
+        self.lbl_firstname.pack(side="top", anchor="nw")
+        self.txt_firstname = tk.Text(self, height=1.3, width=35)
+        self.txt_firstname.pack(side="top")
+
+        # Add Label and textfield for the lastname.
+        self.lbl_lastname = tk.Label(self)
+        self.lbl_lastname['text'] = "Please enter your lastname:"
+        self.lbl_lastname.pack(side="top", anchor="nw")
+        self.txt_lastname = tk.Text(self, height=1.3, width=35)
+        self.txt_lastname.pack(side="top")
+
+        # Add Label and textfield for the weight.
+        self.lbl_weight = tk.Label(self)
+        self.lbl_weight['text'] = "Please enter your weight:"
+        self.lbl_weight.pack(side="top", anchor="nw")
+        self.txt_weight = tk.Text(self, height=1.3, width=35)
+        self.txt_weight.pack(side="top")
+
+        # Add Label and textfield for the height.
+        self.lbl_height = tk.Label(self)
+        self.lbl_height['text'] = "Please enter your height:"
+        self.lbl_height.pack(side="top", anchor="nw")
+        self.txt_height = tk.Text(self, height=1.3, width=35)
+        self.txt_height.pack(side="top")
+
         # Add button to start calculation.
-        self.btn_calculate = tk.Button(self)
+        self.btn_calculate = tk.Button(self, height=1, width=10)
         self.btn_calculate["text"] = "Calculate"
         self.btn_calculate["command"] = self.calculate
-        self.btn_calculate.pack(side="top")
+        self.btn_calculate.pack(side="left")
 
         # Add button to exit application.
-        self.btn_quit = tk.Button(self)
+        self.btn_quit = tk.Button(self, height=1, width=10)
         self.btn_quit["text"] = "Exit"
         self.btn_quit["command"] = self.master.destroy
-        self.btn_quit.pack(side="bottom")
+        self.btn_quit.pack(side="right")
 
     def calculate(self):
         """Calculate the BMI-Index"""
