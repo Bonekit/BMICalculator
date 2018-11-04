@@ -7,5 +7,5 @@ gen
 # Output folder for the csv files.
 /output/
 
-# Virtuel Environment.
+# Virtual Environment.
 /venv/
