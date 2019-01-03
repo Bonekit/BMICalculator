@@ -1,11 +1,7 @@
 # PyCharm Project files.
-.idea
-*.iml
-out
-gen
+.idea/
 
-# Output folder for the csv files.
-/output/
+# vscode project files.
+.vscode/
 
-# Virtual Environment.
-/venv/
+
