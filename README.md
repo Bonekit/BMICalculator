@@ -1,7 +1,7 @@
 ---
 Author: Tobias Menzel
 Date: 18.10.2018
-Language: Python 3.6
+Language: Python 3.7.1
 License: GNU GENERAL PUBLIC LICENCE VERSION 3
 ---
 # BMI-Calculator
@@ -12,5 +12,5 @@ The BMI-Calculator v1.0 to have a better view on your history about loosing or g
 
 ## Build With
 
-- Python 3.6
+- Python 3.7.1
 - Tkinter
