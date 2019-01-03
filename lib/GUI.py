@@ -2,8 +2,7 @@
 # Description:      GUI Class created with Tkinter
 # Author:           Tobias Menzel
 # Date:             26.10.2018
-# Version:
-# Language:         Python 3.6 & Tkinter
+# Language:         Python 3.7.1 & Tkinter
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # Import modules required for the GUI class.
@@ -14,12 +13,10 @@ import time
 from datetime import datetime
 
 
-# Define GUI Class.
-
-
 class Application(tk.Frame):
+    """A Tkinter gui class"""
     def __init__(self, master=None):
-        super().__init__(master, borderwidth=15)
+        super().__init__(master)
         self.pack()
 
         # Initiate default values.
@@ -27,33 +24,44 @@ class Application(tk.Frame):
         self.file_path = os.getenv('HOME')
         self.calc_date = '{:%B %d, %Y}'.format(datetime.now())
 
-        # Add Label and textfield for the firstname.
+        # Add Label and entry field for the firstname.
         self.lbl_firstname = tk.Label(self)
         self.lbl_firstname['text'] = "Please enter your firstname:"
         self.lbl_firstname.pack(side="top", anchor="nw")
-        self.txt_firstname = tk.Text(self, height=1.3, width=35)
-        self.txt_firstname.pack(side="top")
+        self.firstnameEntry = tk.Entry(self)
+        self.firstnameEntry.pack()
+        self.firstname = tk.StringVar()
 
-        # Add Label and textfield for the lastname.
+        # Add Label and entry field for the lastname.
         self.lbl_lastname = tk.Label(self)
         self.lbl_lastname['text'] = "Please enter your lastname:"
         self.lbl_lastname.pack(side="top", anchor="nw")
-        self.txt_lastname = tk.Text(self, height=1.3, width=35)
-        self.txt_lastname.pack(side="top")
+        self.lastnameEntry = tk.Entry(self)
+        self.lastnameEntry.pack()
+        self.lastname = tk.StringVar()
 
-        # Add Label and textfield for the weight.
+        # Add Label and entry field for the weight.
         self.lbl_weight = tk.Label(self)
         self.lbl_weight['text'] = "Please enter your weight:"
         self.lbl_weight.pack(side="top", anchor="nw")
-        self.txt_weight = tk.Text(self, height=1.3, width=35)
-        self.txt_weight.pack(side="top")
+        self.weightEntry = tk.Entry(self)
+        self.weightEntry.pack()
+        self.weight = tk.StringVar()
 
-        # Add Label and textfield for the height.
+        # Add Label and entry field for the height.
         self.lbl_height = tk.Label(self)
         self.lbl_height['text'] = "Please enter your height:"
         self.lbl_height.pack(side="top", anchor="nw")
-        self.txt_height = tk.Text(self, height=1.3, width=35)
-        self.txt_height.pack(side="top")
+        self.heightEntry = tk.Entry(self)
+        self.heightEntry.pack()
+        self.height = tk.StringVar()
+
+        # Add message field
+        self.lbl_msg = tk.Label(self)
+        self.lbl_msg['text'] = "Message Box:"
+        self.lbl_msg.pack(side="top", anchor="nw")
+        self.txt_msg = tk.Text(self, height=5)
+        self.txt_msg.pack(side="top", fill="both")
 
         # Add button to start calculation.
         self.btn_calculate = tk.Button(self, height=1, width=10)
@@ -64,18 +72,21 @@ class Application(tk.Frame):
         # Add button to exit application.
         self.btn_quit = tk.Button(self, height=1, width=10)
         self.btn_quit["text"] = "Exit"
-        self.btn_quit["command"] = self.master.destroy
+        self.btn_quit["command"] = self.quit
         self.btn_quit.pack(side="right")
 
     def calculate(self):
         """Calculate the BMI-Index"""
-        # Declaration.
-        size = 0.0
-        weight = 0.0
-        value = 0.0
+        # Get values
+        self.height = self.heightEntry.get()
+        self.weight = self.weightEntry.get()
 
-        # Calculate.
-        value = round(size / weight ** 2, 1)
+        # Cast the values into float.
+        height = float(self.height)
+        weight = float(self.weight)
+
+        # Calculate
+        self.txt_msg.insert('end', str(round(height / weight ** 2, 1)))
 
     def save_to_csv(self):
         """Write Data to a .csv file, encoded in UTF-8
