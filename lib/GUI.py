@@ -67,13 +67,13 @@ class Application(tk.Frame):
         self.btn_calculate = tk.Button(self, height=1, width=10)
         self.btn_calculate["text"] = "Calculate"
         self.btn_calculate["command"] = self.calculate
-        self.btn_calculate.pack(side="left")
+        self.btn_calculate.pack(side="left", padx=2, pady=2)
 
         # Add button to exit application.
         self.btn_quit = tk.Button(self, height=1, width=10)
         self.btn_quit["text"] = "Exit"
         self.btn_quit["command"] = self.quit
-        self.btn_quit.pack(side="right")
+        self.btn_quit.pack(side="right", padx=2, pady=2)
 
     def calculate(self):
         """Calculate the BMI-Index"""

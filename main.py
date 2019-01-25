@@ -6,13 +6,8 @@
 # Python_version        : 3.7.1
 # ==========================================================================================
 
-# Import Modules
-import subprocess
-import re
-import datetime
-import time
+# Import modules
 import tkinter as tk
-import os
 from lib.GUI import Application
 
 
