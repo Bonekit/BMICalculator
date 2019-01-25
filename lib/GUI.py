@@ -15,13 +15,14 @@ from datetime import datetime
 
 class Application(tk.Frame):
     """A Tkinter gui class"""
+
     def __init__(self, master=None):
         super().__init__(master)
         self.pack()
 
         # Initiate default values.
         self.file_name = 'history.csv'
-        self.file_path = os.getenv('HOME')
+        self.file_path = os.getenv('USERPROFILE')
         self.calc_date = '{:%B %d, %Y}'.format(datetime.now())
 
         # Add Label and entry field for the firstname.
@@ -66,7 +67,7 @@ class Application(tk.Frame):
         # Add button to start calculation.
         self.btn_calculate = tk.Button(self, height=1, width=10)
         self.btn_calculate["text"] = "Calculate"
-        self.btn_calculate["command"] = self.calculate
+        self.btn_calculate["command"] = self.execute
         self.btn_calculate.pack(side="left", padx=2, pady=2)
 
         # Add button to exit application.
@@ -75,49 +76,64 @@ class Application(tk.Frame):
         self.btn_quit["command"] = self.quit
         self.btn_quit.pack(side="right", padx=2, pady=2)
 
-    def calculate(self):
-        """Calculate the BMI-Index"""
+    def execute(self):
+        """Execute calculation and save the data into a csv file"""
         # Get values
         self.height = self.heightEntry.get()
         self.weight = self.weightEntry.get()
+        self.firstname = self.firstnameEntry.get()
+        self.lastname = self.lastnameEntry.get()
 
+        # Get the calculated bmi.
+        bmi = self.calculate(self.height, self.weight)
+
+        # Save the data into a csv file.
+        self.save_to_csv(self.height, self.weight, bmi)
+
+        # Compare the old bmi with the new one.
+        self.compare(bmi)
+
+        # Clean up entry fields.
+        self.clean_up()
+
+    def calculate(self, height, weight):
+        """Calculate the BMI-Index"""
         # Cast the values into float.
-        height = float(self.height)
-        weight = float(self.weight)
+        hi = float(height)
+        we = float(weight)
 
         # Calculate
-        self.txt_msg.insert('end', str(round(height / weight ** 2, 1)))
+        self.txt_msg.insert('end', str(round(we / (hi ** 2), 1)))
 
-    def save_to_csv(self):
-        """Write Data to a .csv file, encoded in UTF-8
-        - Data: date, weight, size, BMI.
-        """
-        # Declaration.
-        weight = ""
-        size = 0.0
-        bmi_value = 0.0
+        # Return
+        return str(round(we / (hi ** 2), 1))
 
+    def save_to_csv(self, height, weight, bmi):
+        """Write Data to a .csv file, encoded in UTF-8"""
         # Add data to list.
-        history = [self.calc_date, weight, size, bmi_value]
+        history = [self.calc_date, weight, height, bmi]
 
         # Save data to csv.
         with open(os.path.join(self.file_path, self.file_name), 'a', encoding='UTF-8', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(history)
 
-    def compare(self, bmi_value):
+    def compare(self, bmi):
         """Compare the old bmi-index with the new one"""
         try:
             with open(os.path.join(self.file_path, self.file_name), 'r', encoding='UTF-8', newline='') as file:
                 reader = csv.reader(file)
                 lines = [row for row in reader]
                 for line in lines[-1:]:
-                    if float(bmi_value) <= float(line[3]):
+                    if float(bmi) <= float(line[3]):
                         print('Same Weight or less, good!')
-                        print('Old BMI: {}, new BMI: {}\n'.format(str(line[3]), str(bmi_value)))
+                        print('Old BMI: {}, new BMI: {}\n'.format(str(line[3]), str(bmi)))
                     else:
                         print('You gained Weight, don´t eat so much food!')
-                        print('Old BMI: {}, new BMI: {}\n'.format(str(line[3]), str(bmi_value)))
+                        print('Old BMI: {}, new BMI: {}\n'.format(str(line[3]), str(bmi)))
         except FileNotFoundError:
             print('Nothing to compare, this seems to be your first entry.')
         time.sleep(1)
+
+    def clean_up(self):
+        """Clean up textboxes"""
