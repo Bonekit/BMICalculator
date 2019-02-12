@@ -6,9 +6,8 @@ License: GNU GENERAL PUBLIC LICENCE VERSION 3
 ---
 # BMI-Calculator
 
-## Description
-
-The BMI-Calculator v1.0 to have a better view on your history about loosing or gaining weight.
+GUI Application to enter your weight, compare the new weight with the old one
+and save them into a csv file. It´s a simple application, don´t expect to much.
 
 ## Build With
 

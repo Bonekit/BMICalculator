@@ -1,35 +1,26 @@
-# Title                 : BMI-Calculator
-# Description           : BMI-Calculator v1.0
-# Author                : Tobias Menzel
-# Date                  : 10.09.2018
-# Notes                 :
-# Python_version        : 3.7.1
-# ==========================================================================================
+"""Entry point for the application"""
 
-# Import modules
 import tkinter as tk
 from lib.GUI import Application
 
-
-# ===============================
-#         MAIN FUNCTION
-# ===============================
-
-# Main Function
+__author__ = "Tobias Menzel"
+__copyright__ = "Copyright 2018, BMI-Calculator"
+__credits__ = ["Tobias Menzel"]
+__license__ = "GPL"
+__version__ = "1.0.0"
+__maintainer__ = "Tobias Menzel"
+__email__ = ""
+__status__ = "Production"
 
 
 def main():
-    # GUI Entry Point.
+    """Main function as starting point"""
     root = tk.Tk()
     app = Application(master=root)
     app.master.title("BMI-Calculator v1.0")
-    app.master.maxsize(1000, 400)
+    app.master.maxsize(680, 300)
+    app.master.minsize(680, 300)
     app.mainloop()
-
-
-# ===============================
-#         MAIN PROGRAM
-# ===============================
 
 
 #   Entry point
