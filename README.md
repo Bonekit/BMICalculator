@@ -63,4 +63,4 @@ Project Link: [BMI-Calculator](https://github.com/Bonekit/BMI-Calculator)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[product-screenshot]: https://github.com/Bonekit/BMI-Calculator/master/github/images/screenshot.png
+[product-screenshot]: https://raw.githubusercontent.com/Bonekit/BMI-Calculator/master/github/images/screenshot.png
